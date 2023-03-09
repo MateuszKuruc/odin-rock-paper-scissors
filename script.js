@@ -2,7 +2,6 @@ const options = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
     const choice = options[Math.floor(Math.random() * options.length)];
-    console.log(choice);
     return choice;
     
 }
@@ -13,7 +12,7 @@ function checkWinner(playerSelection, computerSelection) {
     }   else if (
         (playerSelection == "rock" && computerSelection == "scissors") || 
         (playerSelection == "scissors" && computerSelection == "paper") ||
-        (playerSelection = "paper" && computerSelection == "rock")) {
+        (playerSelection == "paper" && computerSelection == "rock")) {
             return "Player";
         }   else {
         return "Computer";
@@ -23,7 +22,6 @@ function checkWinner(playerSelection, computerSelection) {
 
 function playRound(playerSelection, computerSelection) {
     const result = checkWinner(playerSelection, computerSelection);
-    console.log(result);
     if (result == "Tie") {
         return "It is a draw!";
     }   else if (result == "Player") {
@@ -33,9 +31,26 @@ function playRound(playerSelection, computerSelection) {
     } 
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+
+function game() {
+    console.log("Welcome!");
+    for (let i = 0; i < 5; i++) {
+    const userChoice = prompt("Choose rock, paper or scissors");
+    const playerSelection = userChoice.toLowerCase();
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+    }
+    
+}
+
+
+
+
+game()
+
+
+
 
 
 
@@ -51,6 +66,32 @@ console.log(playRound(playerSelection, computerSelection));
 
 
 /*
+
+function score() {
+    if (result == "Player") {
+    playerScore += 1;
+    }   else if (result == "Computer") {
+    computerScore += 1;
+} else {
+    playerScore += 0;
+    computerScore += 0;}
+    playRound(playerSelection, computerSelection);
+    checkWinner(playerSelection, computerSelection)
+
+
+function score(){
+    if (result == "Player") {
+        playerScore += 1;
+    } else if (result == "Tie") {
+        playerScore += 0;
+        computerScore += 0;
+    }   else {
+        computerScore += 1;
+    }
+    console.log(score());
+
+
+
 function getComputerChoice() {
     const choices = ["Rock", "Paper", "Scissors"]
     const finalChoice = choices[Math.floor(Math.random() * choices.length)];
