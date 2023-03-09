@@ -31,23 +31,48 @@ function playRound(playerSelection, computerSelection) {
     } 
 }
 
-
-
-function game() {
-    console.log("Welcome!");
-    for (let i = 0; i < 5; i++) {
-    const userChoice = prompt("Choose rock, paper or scissors");
-    const playerSelection = userChoice.toLowerCase();
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+function getPlayerChoice() {
+    let validatedInput = false;
+    while (validatedInput == false) {
+    const userChoice = prompt("Please choose rock, paper or scissors");
+    if (userChoice == null) {
+        continue;
     }
-    
+    const userChoiceInLower = userChoice.toLowerCase();
+    if (options.includes(userChoiceInLower)) {
+        validatedInput = true;
+        return userChoiceInLower;
+    }
+}
 }
 
-
-
+function game() {
+    let scorePlayer = 0;
+    let scoreComputer = 0;
+    console.log("Welcome!");
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        console.log("-------------");
+        if (checkWinner(playerSelection, computerSelection) == "Player") {
+            scorePlayer++;
+        }   else if (checkWinner(playerSelection, computerSelection == "Computer")) {
+            scoreComputer++;
+        }  
+    }
+    console.log("Game Over")
+    if (scorePlayer > scoreComputer) {
+        console.log("Player is the winner!");
+    }   else if (scorePlayer < scoreComputer) {
+        console.log("Computer is the winner!");
+    }   else {
+        console.log("It is a draw!");
+    }
+}
 
 game()
+
 
 
 
